@@ -9,7 +9,7 @@ class SplashScreenView extends StatelessWidget {
         body: Column(
           children: [
             Expanded(
-              flex: 2,
+              flex: 1,
               child: Container(),
             ),
             Expanded(
@@ -29,17 +29,7 @@ class SplashScreenView extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 2,
-              child: Center(
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    Colors.black.withOpacity(0.8),
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 3,
+              flex: 1,
               child: Container(),
             ),
           ],
