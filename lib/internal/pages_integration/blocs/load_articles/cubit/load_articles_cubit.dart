@@ -4,6 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:nytimes/data/api/api_util.dart';
 import 'package:nytimes/data/repository/article/article_data_repository.dart';
+import 'package:nytimes/domain/exception/load_articles_exception/load_articles_exception.dart';
+import 'package:nytimes/domain/model/article/article.dart';
 import 'package:nytimes/domain/repository/article/article_repository.dart';
 
 part 'load_articles_state.dart';
@@ -14,18 +16,21 @@ class LoadArticlesCubit extends Cubit<LoadArticlesState> {
   LoadArticlesCubit() : super(LoadArticlesInitial());
 
   Future<void> fetchArticles() async {
-    var _f = DateTime.now();
     return Future.delayed(
-      Duration(milliseconds: 0),
+      Duration(milliseconds: 2500),
       () async {
+        var _f = DateTime.now();
         emit(LoadArticlesLoading());
 
         try {
           var _list = await _articleRepository.fetchArticles();
-          print(_list.last.title);
-          emit(LoadArticlesSuccess());
+          print(_list.first.title);
+
+          emit(LoadArticlesSuccess(_list));
         } on SocketException {
           emit(LoadArticlesError('Unable to connect to the Internet!'));
+        } on LoadArticlesException catch (e) {
+          emit(LoadArticlesError(e.faultString));
         }
 
         print(

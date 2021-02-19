@@ -81,6 +81,12 @@ flutter:
   - family: Chomsky
     fonts:
       - asset: fonts/chomsky/Chomsky.otf
+  - family: Playfair
+    fonts:
+      - asset: fonts/Playfair_Display/static/PlayfairDisplay-Regular.ttf
+        weight: 400
+      - asset: fonts/Playfair_Display/static/PlayfairDisplay-Bold.ttf
+        weight: 700 
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

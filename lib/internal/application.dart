@@ -16,6 +16,7 @@ class Application extends StatelessWidget {
               title: 'NYTimes Posts',
               navigatorKey: Routes.sailor.navigatorKey,
               onGenerateRoute: Routes.sailor.generator(),
+              debugShowCheckedModeBanner: false,
               theme: Theming.currentTheme,
               home: LoadArticles(),
             );
