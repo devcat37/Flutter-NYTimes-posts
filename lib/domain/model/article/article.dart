@@ -9,9 +9,9 @@ class Article {
   final String uri;
   final String byline;
   final String itemType;
-  final String updatedDate;
-  final String createdDate;
-  final String publishedDate;
+  final DateTime updatedDate;
+  final DateTime createdDate;
+  final DateTime publishedDate;
   final String materialTypeFacet;
   final String kicker;
   final List<String> desFacet;

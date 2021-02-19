@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:nytimes/internal/pages_integration/pages/load_articles/load_articles.dart';
 import 'package:nytimes/internal/routes/routes.dart';
 import 'package:nytimes/internal/size/sizing.dart';
 import 'package:nytimes/internal/theme/theming.dart';
-import 'package:nytimes/presentation/global/splah_screen/splash_screen_view.dart';
 
 class Application extends StatelessWidget {
   @override
@@ -17,7 +17,7 @@ class Application extends StatelessWidget {
               navigatorKey: Routes.sailor.navigatorKey,
               onGenerateRoute: Routes.sailor.generator(),
               theme: Theming.currentTheme,
-              home: SplashScreenView(),
+              home: LoadArticles(),
             );
           },
         );

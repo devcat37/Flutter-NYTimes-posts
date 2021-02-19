@@ -9,6 +9,6 @@ class ArticleDataRepository extends ArticleRepository {
 
   @override
   Future<List<Article>> fetchArticles() {
-    
+    return _apiUtil.fetchArticles();
   }
 }

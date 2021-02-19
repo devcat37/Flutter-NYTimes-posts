@@ -7,9 +7,10 @@ class LoadArticles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => LoadArticlesCubit(),
+      create: (_) => LoadArticlesCubit()..fetchArticles(),
       child: BlocBuilder<LoadArticlesCubit, LoadArticlesState>(
         builder: (context, state) {
+          if (state is LoadArticlesLoading) {}
           return SplashScreenView();
         },
       ),
