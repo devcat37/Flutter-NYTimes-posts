@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nytimes/domain/model/article/article.dart';
 import 'package:nytimes/internal/pages_integration/blocs/articles_list/cubit/articles_list_cubit.dart';
+import 'package:nytimes/internal/size/sizing.dart';
 import 'package:nytimes/presentation/widgets/articles_list/article_image.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -17,7 +18,7 @@ class ArticleContainer extends StatelessWidget {
     if (article == null) {
       return Shimmer.fromColors(
         child: Container(
-          height: 150.0,
+          height: 22.5 * Sizing.heightMultiplayer,
           width: MediaQuery.of(context).size.width,
           color: Colors.white,
           // color: Colors.black.withOpacity(0.02),
@@ -46,23 +47,23 @@ class ArticleContainer extends StatelessWidget {
                         article.title,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 16.0,
+                          fontSize: 4.3 * Sizing.widthMultiplayer,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      SizedBox(height: 12.0),
+                      SizedBox(height: 1.8 * Sizing.heightMultiplayer),
                       Text(
                         article.abstract,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 12.0,
+                          fontSize: 3.2 * Sizing.widthMultiplayer,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                       if (orientation == Orientation.landscape)
                         Column(
                           children: [
-                            SizedBox(height: 24.0),
+                            SizedBox(height: 3.6 * Sizing.heightMultiplayer),
                             Text(
                               article.url,
                               style: TextStyle(
@@ -71,6 +72,7 @@ class ArticleContainer extends StatelessWidget {
                             ),
                           ],
                         ),
+                      SizedBox(height: Sizing.heightMultiplayer * 2.0),
                       if (orientation == Orientation.portrait)
                         ArticleImage(
                           url: article.multimedia.first.url,
@@ -79,7 +81,8 @@ class ArticleContainer extends StatelessWidget {
                   ),
                 ),
               ),
-              if (orientation == Orientation.landscape) SizedBox(width: 16.0),
+              if (orientation == Orientation.landscape)
+                SizedBox(width: 4.25 * Sizing.widthMultiplayer),
               Expanded(
                 flex: orientation == Orientation.landscape ? 1 : 0,
                 child: Container(

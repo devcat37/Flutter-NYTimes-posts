@@ -1,3 +1,5 @@
+/// [ApiMultimedia] is the model that is converted from Api
+/// to be converted to [Multimedia]
 class ApiMultimedia {
   final String url;
   final String format;

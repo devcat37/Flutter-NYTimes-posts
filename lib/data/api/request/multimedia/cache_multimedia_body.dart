@@ -1,6 +1,7 @@
 import 'package:nytimes/data/api/request/request_body.dart';
 import 'package:nytimes/domain/model/multimedia/multimedia.dart';
 
+/// Class to cache [Multimedia] model
 class CacheMultimediaBody extends RequestBody {
   final String url;
   final String format;
@@ -11,6 +12,8 @@ class CacheMultimediaBody extends RequestBody {
   final String caption;
   final String copyright;
 
+  /// Named constructor for [CacheMultimediaBody] which converts
+  /// [Multimedia] to Api
   CacheMultimediaBody.fromModel(Multimedia model)
       : url = model.url,
         format = model.format,

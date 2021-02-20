@@ -3,6 +3,8 @@ import 'package:nytimes/data/mapper/multimedia/multimedia_mapper.dart';
 import 'package:nytimes/domain/model/article/article.dart';
 
 class ArticleMapper {
+  /// Converts [ApiArticle] to [Article] for further exploitation
+  /// as appropriate model
   static Article fromApi(ApiArticle api) {
     return Article(
       section: api.section,

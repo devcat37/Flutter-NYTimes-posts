@@ -29,5 +29,8 @@ class Sizing {
 
     heightMultiplayer = _blockSizeVertical;
     widthMultiplayer = _blockSizeHorizontal;
+
+    // print('Width: ' + widthMultiplayer.toString());
+    // print('Height: ' + heightMultiplayer.toString());
   }
 }

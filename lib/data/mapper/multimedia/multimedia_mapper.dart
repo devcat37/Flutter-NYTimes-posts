@@ -2,6 +2,8 @@ import 'package:nytimes/data/api/model/multimedia/api_multimedia.dart';
 import 'package:nytimes/domain/model/multimedia/multimedia.dart';
 
 class MultimediaMapper {
+  /// Converts [ApiMultimedia] to [Multimedia] for further exploitation
+  /// as appropriate model
   static Multimedia fromApi(ApiMultimedia api) {
     return Multimedia(
       url: api.url,

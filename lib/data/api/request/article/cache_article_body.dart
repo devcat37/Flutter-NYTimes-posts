@@ -2,6 +2,7 @@ import 'package:nytimes/data/api/request/multimedia/cache_multimedia_body.dart';
 import 'package:nytimes/data/api/request/request_body.dart';
 import 'package:nytimes/domain/model/article/article.dart';
 
+/// Class to cache [Article] model
 class CacheArticleBody extends RequestBody {
   final String section;
   final String subsection;
@@ -23,6 +24,8 @@ class CacheArticleBody extends RequestBody {
   final List<dynamic> multimedia;
   final String shortUrl;
 
+  /// Named constructor for [CacheArticleBody] which converts
+  /// [Article] to Api
   CacheArticleBody.fromModel(Article model)
       : section = model.section,
         subsection = model.subsection,
@@ -32,6 +35,10 @@ class CacheArticleBody extends RequestBody {
         uri = model.uri,
         byline = model.byline,
         itemType = model.itemType,
+
+        /// Method [.toIso8601String()] is responsible for converting
+        /// [DateTime] model to String which would be the same
+        /// as received from nytimes.com api
         updatedDate = model.updatedDate.toIso8601String(),
         createdDate = model.createdDate.toIso8601String(),
         publishedDate = model.publishedDate.toIso8601String(),

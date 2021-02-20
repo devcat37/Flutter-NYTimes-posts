@@ -27,8 +27,5 @@ class ArticlesListCubit extends Cubit<ArticlesListState> {
     if (await canLaunch(url)) {
       await launch(url);
     }
-    // } else {
-    //   throw 'Could not launch $url';
-    // }
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nytimes/domain/model/article/article.dart';
 import 'package:nytimes/internal/pages_integration/blocs/articles_list/cubit/articles_list_cubit.dart';
+import 'package:nytimes/internal/size/sizing.dart';
 import 'package:nytimes/presentation/widgets/articles_list/article_container.dart';
 
 class ArticlesListView extends StatelessWidget {
@@ -25,7 +26,9 @@ class ArticlesListView extends StatelessWidget {
             ),
             body: SafeArea(
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 6.0),
+                margin: EdgeInsets.symmetric(
+                    horizontal: 4.3 * Sizing.widthMultiplayer,
+                    vertical: Sizing.heightMultiplayer),
                 child: ListView.separated(
                   controller: _controller,
                   itemBuilder: (context, index) {
@@ -39,14 +42,14 @@ class ArticlesListView extends StatelessWidget {
                   separatorBuilder: (context, index) {
                     return Column(
                       children: [
-                        SizedBox(height: 10.0),
+                        SizedBox(height: 1.5 * Sizing.heightMultiplayer),
                         Container(
-                          height: 1.0,
+                          height: Sizing.heightMultiplayer / 6.67,
                           // margin: EdgeInsets.symmetric(horizontal: 8.0),
                           width: MediaQuery.of(context).size.width,
                           color: Colors.black.withOpacity(0.5),
                         ),
-                        SizedBox(height: 10.0),
+                        SizedBox(height: 1.5 * Sizing.heightMultiplayer),
                       ],
                     );
                   },

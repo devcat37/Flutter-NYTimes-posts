@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:nytimes/data/api/model/multimedia/api_multimedia.dart';
 
+/// [ApiArticle] is the model that is converted from Api
+/// to be converted to [Article]
 class ApiArticle {
   final String section;
   final String subsection;
@@ -24,7 +28,7 @@ class ApiArticle {
   ApiArticle.fromApi(Map<String, dynamic> api)
       : section = api['section'],
         subsection = api['subsection'],
-        title = api['title'],
+        title = utf8.decode(utf8.encode(api['title'])),
         abstract = api['abstract'],
         url = api['url'],
         uri = api['uri'],
