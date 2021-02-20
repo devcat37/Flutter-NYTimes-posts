@@ -1,3 +1,5 @@
+import 'package:nytimes/data/api/request/article/cache_articles_body.dart';
+import 'package:nytimes/data/api/service/hive/hive_db.dart';
 import 'package:nytimes/data/api/service/new_york_times/new_york_times.dart';
 import 'package:nytimes/data/mapper/article/article_mapper.dart';
 import 'package:nytimes/domain/model/article/article.dart';
@@ -11,5 +13,14 @@ class ApiUtil {
       _list.add(ArticleMapper.fromApi(_article));
     }
     return _list;
+  }
+
+  Future<void> cacheArticles({List<Article> articles}) async {
+    var _body;
+    for (var _article in articles) {
+      _body = CacheArticlesBody.fromModel(_article);
+      // ignore: unawaited_futures
+      HiveDb().cacheArticles(_body);
+    }
   }
 }

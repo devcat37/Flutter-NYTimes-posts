@@ -11,4 +11,9 @@ class ArticleDataRepository extends ArticleRepository {
   Future<List<Article>> fetchArticles() {
     return _apiUtil.fetchArticles();
   }
+
+  @override
+  Future<void> cacheArticles({List<Article> articles}) {
+    return _apiUtil.cacheArticles(articles: articles);
+  }
 }
