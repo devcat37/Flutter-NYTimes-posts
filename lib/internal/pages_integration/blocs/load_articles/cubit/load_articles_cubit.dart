@@ -26,8 +26,10 @@ class LoadArticlesCubit extends Cubit<LoadArticlesState> {
           var _list = await _articleRepository.fetchArticles();
           //print(_list.first.title);
 
+          await _articleRepository.clearArticles();
           // ignore: unawaited_futures
           _articleRepository.cacheArticles(articles: _list);
+
           emit(LoadArticlesSuccess(_list));
         } on SocketException {
           emit(LoadArticlesError('Unable to connect to the Internet!'));

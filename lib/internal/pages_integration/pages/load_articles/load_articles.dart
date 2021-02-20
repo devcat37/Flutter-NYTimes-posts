@@ -13,7 +13,7 @@ class LoadArticles extends StatelessWidget {
         builder: (context, state) {
           if (state is! LoadArticlesInitial && state is! LoadArticlesError) {
             return ArticlesList();
-          }
+          } else if (state is LoadArticlesError) {}
           return SplashScreenView();
         },
       ),

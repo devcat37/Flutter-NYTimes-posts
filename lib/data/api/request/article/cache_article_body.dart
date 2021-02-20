@@ -1,7 +1,8 @@
+import 'package:nytimes/data/api/request/multimedia/cache_multimedia_body.dart';
 import 'package:nytimes/data/api/request/request_body.dart';
 import 'package:nytimes/domain/model/article/article.dart';
 
-class CacheArticlesBody extends RequestBody {
+class CacheArticleBody extends RequestBody {
   final String section;
   final String subsection;
   final String title;
@@ -22,7 +23,7 @@ class CacheArticlesBody extends RequestBody {
   final List<dynamic> multimedia;
   final String shortUrl;
 
-  CacheArticlesBody.fromModel(Article model)
+  CacheArticleBody.fromModel(Article model)
       : section = model.section,
         subsection = model.subsection,
         title = model.title,
@@ -40,7 +41,9 @@ class CacheArticlesBody extends RequestBody {
         orgFacet = model.orgFacet,
         perFacet = model.perFacet,
         geoFacet = model.geoFacet,
-        multimedia = model.multimedia,
+        multimedia = model.multimedia
+            .map((e) => CacheMultimediaBody.fromModel(e).toApi())
+            .toList(),
         shortUrl = model.shortUrl;
 
   @override

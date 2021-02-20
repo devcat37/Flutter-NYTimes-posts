@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nytimes/domain/model/article/article.dart';
 import 'package:nytimes/presentation/widgets/articles_list/article_image.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ArticleContainer extends StatelessWidget {
   final Article article;
@@ -12,10 +13,15 @@ class ArticleContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (article == null) {
-      return Container(
-        height: 250.0,
-        width: MediaQuery.of(context).size.width,
-        color: Colors.black.withOpacity(0.02),
+      return Shimmer.fromColors(
+        child: Container(
+          height: 250.0,
+          width: MediaQuery.of(context).size.width,
+          color: Colors.white,
+          // color: Colors.black.withOpacity(0.02),
+        ),
+        baseColor: Colors.blueGrey[50],
+        highlightColor: Colors.grey[400],
       );
     }
     return InkWell(
