@@ -34,6 +34,6 @@ class HiveDb {
     Hive.box(_ARTICLES).add(
       jsonEncode(body.toApi()),
     );
-    print(jsonEncode(body.toApi()));
+    // print(jsonEncode(body.toApi()));
   }
 }

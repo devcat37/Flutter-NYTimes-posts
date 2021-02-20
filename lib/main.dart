@@ -3,7 +3,7 @@ import 'package:nytimes/data/api/service/hive/hive_db.dart';
 import 'package:nytimes/internal/application.dart';
 import 'package:nytimes/internal/routes/routes.dart';
 
-Future<void> main() {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   HiveDb.init();
   Routes.createRoutes();

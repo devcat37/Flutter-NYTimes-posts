@@ -16,7 +16,6 @@ class NewYorkTimes {
     }
 
     if (_list.isEmpty) {
-      // TODO: response is empty exception
       throw LoadArticlesException('Articles list is empty');
     } else if (_response.statusCode != 200) {
       throw LoadArticlesException('Response code is not success');

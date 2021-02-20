@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nytimes/domain/model/article/article.dart';
-import 'package:nytimes/internal/pages_integration/blocs/load_articles/cubit/load_articles_cubit.dart';
+import 'package:nytimes/internal/pages_integration/blocs/articles_list/cubit/articles_list_cubit.dart';
 import 'package:nytimes/presentation/widgets/articles_list/article_container.dart';
 
 class ArticlesListView extends StatelessWidget {
@@ -11,10 +11,11 @@ class ArticlesListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OrientationBuilder(builder: (context, orientation) {
-      return BlocBuilder<LoadArticlesCubit, LoadArticlesState>(
+      return BlocBuilder<ArticlesListCubit, ArticlesListState>(
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(
+              centerTitle: true,
               title: Text(
                 'The New York Times',
                 style: TextStyle(fontFamily: 'Chomsky', color: Colors.black),
@@ -29,7 +30,7 @@ class ArticlesListView extends StatelessWidget {
                   controller: _controller,
                   itemBuilder: (context, index) {
                     // ignore: omit_local_variable_types
-                    Article _article = state is LoadArticlesSuccess
+                    Article _article = state is ArticlesListSuccess
                         ? state.articles.elementAt(index)
                         : null;
                     return ArticleContainer(
@@ -49,7 +50,7 @@ class ArticlesListView extends StatelessWidget {
                       ],
                     );
                   },
-                  itemCount: state is LoadArticlesSuccess
+                  itemCount: state is ArticlesListSuccess
                       ? state.articles.length
                       : _LOADING_LIST_COUNT,
                 ),

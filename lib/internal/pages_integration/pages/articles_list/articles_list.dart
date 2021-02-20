@@ -7,7 +7,7 @@ class ArticlesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => ArticlesListCubit(),
+      create: (_) => ArticlesListCubit()..fetchArticles(),
       child: BlocBuilder<ArticlesListCubit, ArticlesListState>(
         builder: (context, state) {
           return ArticlesListView();

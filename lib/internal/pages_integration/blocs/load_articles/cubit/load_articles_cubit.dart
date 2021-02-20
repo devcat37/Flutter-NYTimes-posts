@@ -5,7 +5,6 @@ import 'package:meta/meta.dart';
 import 'package:nytimes/data/api/api_util.dart';
 import 'package:nytimes/data/repository/article/article_data_repository.dart';
 import 'package:nytimes/domain/exception/load_articles_exception/load_articles_exception.dart';
-import 'package:nytimes/domain/model/article/article.dart';
 import 'package:nytimes/domain/repository/article/article_repository.dart';
 
 part 'load_articles_state.dart';
@@ -30,11 +29,13 @@ class LoadArticlesCubit extends Cubit<LoadArticlesState> {
           // ignore: unawaited_futures
           _articleRepository.cacheArticles(articles: _list);
 
-          emit(LoadArticlesSuccess(_list));
+          emit(LoadArticlesSuccess());
         } on SocketException {
           emit(LoadArticlesError('Unable to connect to the Internet!'));
         } on LoadArticlesException catch (e) {
           emit(LoadArticlesError(e.faultString));
+        } on NoSuchMethodError {
+          emit(LoadArticlesError(''));
         }
 
         print(

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nytimes/internal/pages_integration/blocs/load_articles/cubit/load_articles_cubit.dart';
 import 'package:nytimes/internal/pages_integration/pages/articles_list/articles_list.dart';
 import 'package:nytimes/presentation/global/splah_screen/splash_screen_view.dart';
+import 'package:nytimes/presentation/pages/articles_list/articles_list_error_view.dart';
 
 class LoadArticles extends StatelessWidget {
   @override
@@ -13,7 +14,9 @@ class LoadArticles extends StatelessWidget {
         builder: (context, state) {
           if (state is! LoadArticlesInitial && state is! LoadArticlesError) {
             return ArticlesList();
-          } else if (state is LoadArticlesError) {}
+          } else if (state is LoadArticlesError) {
+            return ArticlesListErrorView();
+          }
           return SplashScreenView();
         },
       ),
